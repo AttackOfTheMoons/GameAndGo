@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.uncg</groupId>
-	<artifactId>flagproject</artifactId>
+	<artifactId>gameandgo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Flag Project</name>
-	<description>Flag project using Spring Boot</description>
+	<name>Game and Go</name>
+	<description>Game and Go Spring Boot and MongoDB</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongodb-driver-sync</artifactId>
-			<version>4.0.5</version>
+			<version>4.7.1</version>
 		</dependency>
 </dependencies>
 

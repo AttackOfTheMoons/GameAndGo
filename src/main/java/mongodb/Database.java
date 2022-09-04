@@ -13,7 +13,7 @@ public class Database
 {
 	private final MongoClient client;
 	MongoDatabase database;
-	Database(String mongodbURI, String databaseName)
+	public Database(String mongodbURI, String databaseName)
 	{
 		final CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
 			fromProviders(PojoCodecProvider.builder().automatic(true).build()));
@@ -21,7 +21,7 @@ public class Database
 		this.client = client;
 
 		MongoDatabase mongoDatabase = client.getDatabase(databaseName);
-		mongoDatabase = mongoDatabase.withCodecRegistry(pojoCodecRegistry);
+		 mongoDatabase = mongoDatabase.withCodecRegistry(pojoCodecRegistry);
 		this.database = mongoDatabase;
 	}
 
