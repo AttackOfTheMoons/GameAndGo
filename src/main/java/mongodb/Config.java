@@ -1,6 +1,9 @@
 package mongodb;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class Config
 {
-	public final static String URI_STRING = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.zzlni.mongodb.net/?retryWrites=true&w=majority";
+	static Dotenv dotenv = Dotenv.load();
+	public final static String URI_STRING = dotenv.get("MONGODB_URI");
 }
