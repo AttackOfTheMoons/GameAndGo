@@ -1,34 +1,34 @@
+
 package com.uncg.gameandgo.schema;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.annotation.Id;
+	import lombok.Getter;
+	import lombok.Setter;
+	import org.springframework.data.annotation.Id;
 
 public class User
 {
 	@Id
 	private String id;
-
 	@Getter
-	@Setter
 	private String username;
-	@Getter
-	@Setter
-	private String passwordHash;
-	@Getter
+	private String hashedPwd;
+	private String passwordSalt;
 	private boolean isAdmin;
 
-	public User(String username, String passwordHash) {
-		this(username, passwordHash, false);
+	public User() {
+
 	}
-	public User(String username, String passwordHash, boolean isAdmin) {
+
+
+	public User(String username, String hashedPwd, String passwordSalt) {
 		this.username = username;
-		this.passwordHash = passwordHash;
-		this.isAdmin = isAdmin;
+		this.hashedPwd = hashedPwd;
+		this.passwordSalt = passwordSalt;
+		this.isAdmin = false;
 	}
 
 	@Override
 	public String toString(){
-		return "User(Username = " + this.username + ", Password Hash = " + this.passwordHash + ")";
+		return "User(username = " + this.username + ", hashedPwd = " + this.hashedPwd + ", passwordSalt = " + passwordSalt + ", isAdmin = " + isAdmin + ")";
 	}
 }
