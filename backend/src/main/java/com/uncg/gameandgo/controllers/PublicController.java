@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/all")
 public class PublicController
 {
-	@Value("uncg.gameandgo.steam")
+	@Value("${uncg.gameandgo.steam}")
 	private String steamKey;
 
 	@GetMapping("/")

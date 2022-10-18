@@ -1,15 +1,19 @@
 package com.uncg.gameandgo.controllers;
 
+import com.uncg.gameandgo.security.jwt.JwtUtils;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 
 public class SteamRequests
 {
+	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
 	public static ResponseEntity<?> getRequest(String baseUri) throws IOException, InterruptedException
 	{
@@ -41,6 +45,7 @@ public class SteamRequests
 		}
 		else
 		{
+			logger.error(String.format("Error in GET request to %s with params %s", baseUri, params));
 			return ResponseEntity.internalServerError()
 				.body("Could not reach steam api");
 		}
