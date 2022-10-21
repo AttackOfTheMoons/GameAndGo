@@ -49,9 +49,10 @@ const Home = () => {
         <div className="container">
             {error && <header className="jumbotron"><h3>{error}</h3></header>}
             {games && games.map(({appid}, index) =>
-                <Game key={index} appid={appid}/>,
+                <Game key={appid} appid={appid}/>,
             )}
-            {!error && <button onClick={previous}>Prev</button>}
+            {(!error && appIDHistory.length > 1) &&
+                <button onClick={previous}>Prev</button>}
             {!error && <button onClick={next}>Next</button>}
         </div>
     );

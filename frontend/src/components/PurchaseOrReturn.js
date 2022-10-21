@@ -1,24 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import UserService from '../services/user.service';
 import PropTypes from 'prop-types';
 
-const PurchaseOrReturn = ({appid, setNotification}) => {
-    const [owned, setOwned] = useState(false);
-
-    useEffect(() => {
-        UserService.checkForPurchase(appid).then(
-            (response) => {
-                setOwned(response.data);
-            },
-            (error) => {
-                const _content = (error.response && error.response.data) ||
-                                error.message ||
-                                error.toString();
-                setNotification(_content, false);
-            },
-        );
-    }, [appid, setNotification]);
-
+const PurchaseOrReturn = ({appid, owned, setNotification, setOwned}) => {
     const purchase = () => {
         UserService.purchase(appid).then(
             (response) => {
@@ -73,6 +57,8 @@ const PurchaseOrReturn = ({appid, setNotification}) => {
 PurchaseOrReturn.propTypes = {
     appid: PropTypes.string,
     setNotification: PropTypes.func,
+    owned: PropTypes.bool,
+    setOwned: PropTypes.func,
 };
 
 export default PurchaseOrReturn;

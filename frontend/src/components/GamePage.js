@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import AuthService from '../services/auth.service';
 import SteamStoreService from '../services/steamstore.service';
+import UserService from '../services/user.service';
 import PurchaseOrReturn from './PurchaseOrReturn';
 import Price from './Price';
 
@@ -14,6 +15,7 @@ const GamePage = () => {
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(true);
     const [notFound, setNotFound] = useState(false);
+    const [owned, setOwned] = useState(false);
 
     const currentUser = AuthService.getCurrentUser();
 
@@ -31,6 +33,21 @@ const GamePage = () => {
                 setLoading(false);
             }
         });
+        if (currentUser) {
+            UserService.checkForPurchase(appid).then(
+                (response) => {
+                    if (response.status === 200) {
+                        setOwned(response.data);
+                    }
+                },
+                (error) => {
+                    const _content = (error.response && error.response.data) ||
+                                error.message ||
+                                error.toString();
+                    handleNotification(_content, false);
+                },
+            );
+        }
     }, []);
 
     const handleNotification = (message, success) => {
@@ -61,7 +78,9 @@ const GamePage = () => {
                 <PurchaseOrReturn
                     appid={appid}
                     setNotification={(message, success) =>
-                        handleNotification(message, success)}/>
+                        handleNotification(message, success)}
+                    owned={owned}
+                    setOwned={setOwned}/>
                 }
                 <Price appid={appid}></Price>
             </div>
