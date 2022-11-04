@@ -4,14 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-public class PriceResponse
+public class GameQueryResponse
 {
 	@Getter
-	private String appid;
-
+	private String appID;
 	@Getter
-	private Float price;
-
+	private String matchName;
 	@Getter
-	private boolean isAdmin;
+	private String imageURL;
 }
