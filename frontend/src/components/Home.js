@@ -49,7 +49,7 @@ const Home = () => {
     return (
         <div className="container">
             {error && <header className="jumbotron"><h3>{error}</h3></header>}
-            <SearchBox />
+            {!error && <SearchBox />}
             {games && games.map(({appid}, index) =>
                 <Game key={appid} appid={appid}/>,
             )}
