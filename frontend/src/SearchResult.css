@@ -1,0 +1,17 @@
+
+.resultsBox {
+    z-index: 2;
+    position: absolute;
+    background-color: white;
+    list-style-type:none;
+    border: 1px black solid;
+    padding: 10px;
+}
+
+.resultListItem {
+    margin:0 0 10px 0; 
+}
+
+.searchName {
+    margin:0 0 0 10px; 
+}
