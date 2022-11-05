@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import PublicService from '../services/public.service';
 
 import Game from './Game';
+import SearchBox from './SearchBox';
 
 const Home = () => {
     const [error, setError] = useState('Loading games');
@@ -48,6 +49,7 @@ const Home = () => {
     return (
         <div className="container">
             {error && <header className="jumbotron"><h3>{error}</h3></header>}
+            {!error && <SearchBox />}
             {games && games.map(({appid}, index) =>
                 <Game key={appid} appid={appid}/>,
             )}

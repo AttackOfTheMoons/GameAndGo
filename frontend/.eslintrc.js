@@ -25,5 +25,6 @@ module.exports = {
         'camelcase': 'error',
         'space-infix-ops': 'error',
         'no-console': 'error',
+        'linebreak-style': ['error', 'windows'],
     },
 };

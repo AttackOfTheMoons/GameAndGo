@@ -20,7 +20,7 @@ public class SteamRequests
 		return getRequest(baseUri, Map.of());
 	}
 
-	public static ResponseEntity<?> getRequest(String baseUri, Map<String, Object> params) throws IOException, InterruptedException
+	public static ResponseEntity<String> getRequest(String baseUri, Map<String, Object> params) throws IOException, InterruptedException
 	{
 		HttpClient client = HttpClient.newHttpClient();
 		StringBuilder stringBuilder = new StringBuilder(baseUri);
