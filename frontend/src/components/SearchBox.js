@@ -8,11 +8,11 @@ const SearchBox = () => {
     const inputChange = (e) => {
         e.preventDefault();
         setSearchInput(e.target.value);
-        if (searchInput === '') {
+        if (e.target.value === '') {
             setSearchResults([]);
             return;
         }
-        PublicService.searchGame(searchInput).then((results) => {
+        PublicService.searchGame(e.target.value).then((results) => {
             if (results.status === 200) {
                 setSearchResults(results.data);
             }
